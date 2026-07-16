@@ -1,0 +1,21 @@
+package com.dsa.heaps;
+
+import java.util.PriorityQueue;
+
+/**
+ * LeetCode 215 - Kth Largest Element in an Array
+ * Time: O(n log k) | Space: O(k)
+ */
+public class KthLargestElement {
+
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for (int num : nums) {
+            minHeap.offer(num);
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+        }
+        return minHeap.peek();
+    }
+}
